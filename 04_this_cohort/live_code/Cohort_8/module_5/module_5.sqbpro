@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="12168"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="booth" custom_title="0" dock_id="2" table="4,5:mainbooth"/><dock_state state="000000ff00000000fd0000000100000002000004a4000003a5fc0100000002fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500320100000000000004a40000012300ffffff000004a40000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="INSERT_UPDATE_DELETE*">/* MODULE 5 */
+
 /* INSERT UPDATE DELETE */
 
 
@@ -9,15 +9,33 @@ CREATE TEMP TABLE product_expanded AS
 --SELECT * FROM product_expanded
 
 /* 1. add a product to the temp table */
+--INSERT
+INSERT INTO product_expanded
+VALUES(24,'ALmonds','1 lbs',3,'lbs');
 
+SELECT * FROM product_expanded;
 
 
 /* 2. change the product_size for THAT product */
+--UPDATE
+--change the product_size for almonds to 1/2 kg
+UPDATE product_expanded
+SET product_size = '1/2 kg', product_qty_type = 'kg'
+--SELECT * FROM product_expanded
+WHERE product_id = 24;
 
+SELECT * FROM product_expanded;
 
 
 /* 3. delete the newly added product */</sql><sql name="vendor_daily_sales_view">/* MODULE 5 */
 /* VIEW */
+
+--DELETE
+DELETE FROM product_expanded
+--SELECT * FROM product_expanded -- write this first, it can help you to determine you are looking at the right rows before deleting
+WHERE product_id = 24;
+
+SELECT * FROM product_expanded;
 
 /* 1. Create a vendor daily sales view */
 
